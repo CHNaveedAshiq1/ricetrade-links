@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RiceTrade, Rice Trading Platform</title>
+<meta name="description" content="RiceTrade is Pakistan's rice trading marketplace. Live listings, chat, offers and deals for mills, brokers, farmers and arhtis.">
+<link rel="icon" href="https://mmofxyqqwvwftzmxvzhq.supabase.co/storage/v1/object/public/ricetrade-links/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #16A34A;
+    --green-dark: #0F5132;
+    --green-light: #E8F5E9;
+    --gold: #F5C542;
+    --ink: #1A1A1A;
+    --muted: #5F6B62;
+    --line: #E2E8E3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #FFFFFF;
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+  }
+
+  /* Header */
+  .header {
+    background: var(--green-dark);
+    color: #FFFFFF;
+    border-radius: 0 0 20px 20px;
+    padding: 28px 20px 24px;
+    margin: 0 -16px;
+    text-align: center;
+  }
+  .header img.logo {
+    width: 84px;
+    height: 84px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    background: #FFFFFF;
+  }
+  .header h1 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    margin-top: 12px;
+  }
+  .header .strapline {
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .header .tagline {
+    color: #D9EADD;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  /* Cards */
+  .card {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 16px;
+    box-shadow: 0 2px 10px rgba(15, 81, 50, 0.06);
+  }
+  .card .kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .card .meta {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  .card .price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--green-dark);
+    margin-top: 8px;
+  }
+  .hidden { display: none; }
+
+  /* Buttons */
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 16px;
+  }
+  .btn-open {
+    background: var(--green-light);
+    color: var(--green-dark);
+    border: 1px solid var(--green);
+  }
+  .btn-download {
+    background: var(--green);
+    color: #FFFFFF;
+    font-size: 17px;
+    padding: 16px;
+  }
+
+  /* Download section */
+  .download {
+    background: var(--green-light);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 18px;
+    margin-top: 20px;
+  }
+  .download h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--green-dark);
+  }
+  .download p.sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  .download ul {
+    list-style: none;
+    margin-top: 12px;
+  }
+  .download li {
+    font-size: 15px;
+    padding: 8px 0 8px 26px;
+    position: relative;
+    border-top: 1px solid #D6E7D9;
+  }
+  .download li:first-child { border-top: none; }
+  .download li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 15px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--green-dark);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 28px;
+  }
+  .footer .brand {
+    color: var(--green-dark);
+    font-weight: 700;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <img class="logo" src="https://mmofxyqqwvwftzmxvzhq.supabase.co/storage/v1/object/public/ricetrade-links/logo.jpg" alt="RiceTrade logo">
+    <h1>RiceTrade</h1>
+    <div class="strapline">Rice Trading Platform</div>
+    <p class="tagline">Pakistan's rice trading marketplace. Quality Rice, Pakistan Mandi.</p>
+  </header>
+
+  <!-- Shared listing card, filled by JavaScript when ?l= is present -->
+  <section class="card hidden" id="listingCard">
+    <div class="kicker">Shared listing</div>
+    <h2 id="listingTitle"></h2>
+    <div class="meta" id="listingCity"></div>
+    <div class="price" id="listingPrice"></div>
+    <div class="meta">Open it in the RiceTrade app to chat with the seller and make an offer.</div>
+  </section>
+
+  <!-- Shared member card, filled by JavaScript when ?u= is present -->
+  <section class="card hidden" id="memberCard">
+    <div class="kicker">Shared member</div>
+    <h2 id="memberName"></h2>
+    <div class="meta">Open their profile in the RiceTrade app to see listings and start a chat.</div>
+  </section>
+
+  <a class="btn btn-open" id="openInApp" href="#">Open in RiceTrade</a>
+
+  <section class="download">
+    <h2>Get the RiceTrade app</h2>
+    <p class="sub">Free to download. Made for Pakistan's rice trade.</p>
+    <ul>
+      <li>Live rice listings from mills, brokers, farmers and arhtis across Pakistan</li>
+      <li>Chat, offers and deals inside the app</li>
+      <li>Rates from real active listings</li>
+    </ul>
+    <a class="btn btn-download" id="downloadBtn" href="#">Download the App</a>
+  </section>
+
+  <footer class="footer">
+    <div class="brand">RiceTrade, Rice Trading Platform</div>
+    <div>Made for Pakistan's rice trade.</div>
+  </footer>
+
+</div>
+
+<script>
+  // ============================================================
+  // APK_URL: download link for the app. It points at the stable
+  // app.apk object in this same bucket on the app's own backend
+  // (each new build replaces that one object, so this link
+  // never changes). When the Google Play listing exists, swap
+  // this one value to the Play link.
+  // ============================================================
+  var APK_URL = "https://mmofxyqqwvwftzmxvzhq.supabase.co/storage/v1/object/public/ricetrade-links/app.apk";
+
+  // Public read-only backend key (safe to ship in this page).
+  var SUPABASE_URL = "https://mmofxyqqwvwftzmxvzhq.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_9bhtBJQuK7jPFSk5B0TszQ_-_vH7B2Q";
+
+  var params = new URLSearchParams(window.location.search);
+
+  // Download button href comes from APK_URL only.
+  document.getElementById("downloadBtn").href = APK_URL;
+
+  // Shared member card: ?u=<username>
+  var username = params.get("u");
+  if (username) {
+    document.getElementById("memberName").textContent = "@" + username + " on RiceTrade";
+    document.getElementById("memberCard").classList.remove("hidden");
+  }
+
+  // "Open in RiceTrade" Android intent link, aimed at the exact
+  // shared item through the app's custom scheme (ricetrade://u/
+  // or ricetrade://l/), which always reaches the app when it is
+  // installed. Harmless on desktop: the browser fallback points
+  // back at this same page.
+  var listingIdParam = params.get("l");
+  var intentTarget = "open";
+  if (username) {
+    intentTarget = "u/" + encodeURIComponent(username);
+  } else if (listingIdParam) {
+    intentTarget = "l/" + encodeURIComponent(listingIdParam);
+  }
+  var fallback = encodeURIComponent(window.location.href);
+  document.getElementById("openInApp").href =
+    "intent://" + intentTarget + "#Intent;scheme=ricetrade;package=com.aistudio.ricetrading.zmkqtr;" +
+    "S.browser_fallback_url=" + fallback + ";end";
+
+  // Shared listing card: ?l=<listing id>
+  var listingId = params.get("l");
+  if (listingId) {
+    var url = SUPABASE_URL + "/rest/v1/listings?id=eq." + encodeURIComponent(listingId) +
+      "&select=title,city,price_per_ton,quantity_kg,is_active";
+    fetch(url, {
+      headers: {
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY
+      }
+    })
+    .then(function (res) { return res.ok ? res.json() : []; })
+    .then(function (rows) {
+      if (!rows || !rows.length) return; // no row: card stays hidden, no error text
+      var row = rows[0];
+      document.getElementById("listingTitle").textContent = row.title || "Rice listing";
+      document.getElementById("listingCity").textContent = row.city || "";
+      if (row.price_per_ton !== null && row.price_per_ton !== undefined) {
+        var price = Number(row.price_per_ton).toLocaleString("en-US", { maximumFractionDigits: 2 });
+        document.getElementById("listingPrice").textContent = "PKR " + price + " / ton";
+      }
+      document.getElementById("listingCard").classList.remove("hidden");
+    })
+    .catch(function () {
+      // Fetch failed: hide the card quietly, show nothing.
+    });
+  }
+</script>
+</body>
+</html>
