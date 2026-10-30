@@ -232,13 +232,18 @@
 
 <script>
   // ============================================================
-  // APK_URL: download link for the app. It points at the stable
-  // app.apk object in this same bucket on the app's own backend
-  // (each new build replaces that one object, so this link
-  // never changes). When the Google Play listing exists, swap
-  // this one value to the Play link.
+  // APK_URL: fallback download link for the app, used only if
+  // the live version check below cannot run. The Download
+  // button is set from version.json in the app backend's
+  // public bucket: every new build delivery replaces that one
+  // small file with the latest build's download address, so
+  // this page always serves the newest build on its own.
+  // (The APK file itself has not lived in the bucket since
+  // Build 50: the bucket rejects files over 50 MB, so builds
+  // are hosted as GitHub Release assets.) When the Google
+  // Play listing exists, point version.json at the Play link.
   // ============================================================
-  var APK_URL = "https://mmofxyqqwvwftzmxvzhq.supabase.co/storage/v1/object/public/ricetrade-links/RiceTrade.apk";
+  var APK_URL = "https://github.com/CHNaveedAshiq1/ricetrade-links/releases/download/build-53/RiceTrade.apk";
 
   // Public read-only backend key (safe to ship in this page).
   var SUPABASE_URL = "https://mmofxyqqwvwftzmxvzhq.supabase.co";
@@ -246,8 +251,19 @@
 
   var params = new URLSearchParams(window.location.search);
 
-  // Download button href comes from APK_URL only.
-  document.getElementById("downloadBtn").href = APK_URL;
+  // Download button: start from the fallback address, then
+  // ask version.json for the latest build's address and use
+  // that instead, so the button can never sit on an old build.
+  var downloadBtn = document.getElementById("downloadBtn");
+  downloadBtn.href = APK_URL;
+  fetch(SUPABASE_URL + "/storage/v1/object/public/ricetrade-links/version.json")
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (data) {
+      if (data && typeof data.apk_url === "string" && data.apk_url.indexOf("https://") === 0) {
+        downloadBtn.href = data.apk_url;
+      }
+    })
+    .catch(function () { /* keep the fallback address */ });
 
   // Shared member card: ?u=<username>
   var username = params.get("u");
